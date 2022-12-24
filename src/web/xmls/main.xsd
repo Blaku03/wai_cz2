@@ -1,0 +1,216 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+
+  <xs:element name="hipertext" type="hipertextType"/>
+
+  <xs:complexType name="hipertextType">
+    <xs:sequence>
+      <xs:element name="author" type="authorType" />
+      <xs:element name="websiteTitle" type="titleStringType" />
+      <xs:element name="chess" type="chessType"/>
+      <xs:element name="bestPlayers">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="player" type="playerType" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="authorType">
+    <xs:complexContent>
+      <xs:extension base="personType">
+        <xs:sequence>
+          <xs:element name="group">
+            <xs:simpleType>
+              <xs:restriction base="xs:int">
+                <xs:maxInclusive value="9" />
+                <xs:minExclusive value="0" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="year" type="currentYear"/>
+        </xs:sequence>
+        <xs:attribute ref="alive" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="chessType">
+    <xs:sequence>
+      <xs:element name="history">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="text" type="longTextType" />
+            <xs:element ref="photo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="photoGallery" type="photoGalleryType" />
+      <xs:element name="pieces">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="title" />
+            <xs:element name="piece" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element ref="name" minOccurs="1" />
+                  <xs:element name="value" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="photoGalleryType">
+    <xs:sequence>
+      <xs:element ref="title" />
+      <xs:element name="photos">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="photo" minOccurs="0" maxOccurs="unbounded"></xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="playerType">
+    <xs:complexContent>
+      <xs:extension base="chessPlayerType">
+        <xs:sequence>
+          <xs:element name="about" type="longTextType" />
+          <xs:element name="bestGames">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="game" type="gameType" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attributeGroup ref="playerAttribute" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="gameType">
+    <xs:sequence >
+      <xs:element name="opponent" type="chessPlayerType"/>
+      <xs:element ref="link" />
+    </xs:sequence>
+    <xs:attributeGroup ref="gameAttribute" />
+  </xs:complexType>
+
+  <xs:complexType name="chessPlayerType">
+    <xs:complexContent>
+      <xs:extension base="personType">
+        <xs:sequence>
+          <xs:element name="birth" type="xs:gYear"/>
+          <xs:element ref="photo" minOccurs="0" />
+          <xs:element name="fide" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="elo">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:positiveInteger">
+                      <xs:totalDigits value="4" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element ref="link" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="personType">
+    <xs:sequence>
+      <xs:element ref="name" />
+      <xs:element ref="surname" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sourceType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="source" type="xs:anyURI" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:attributeGroup name="gameAttribute">
+    <xs:attribute name="number">
+      <xs:simpleType>
+        <xs:restriction base="xs:positiveInteger">
+          <xs:minInclusive value="1" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute ref="won" />
+    <xs:attribute name="color" type="colorType"/>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="playerAttribute">
+    <xs:attribute ref="alive" />
+    <xs:attribute name="worldChampion" type="boolChessType" />
+  </xs:attributeGroup>
+
+  <xs:simpleType name="boolChessType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="yes" />
+      <xs:enumeration value="no" />
+      <xs:enumeration value="tie" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="colorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="white" />
+      <xs:enumeration value="black" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="bigLetterType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="([A-Za-z])*" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="titleStringType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="30"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="longTextType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="60" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="currentYear">
+    <xs:restriction base="xs:string">
+      <xs:length value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="name">
+    <xs:simpleType>
+      <xs:union memberTypes="bigLetterType titleStringType" />
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="surname" type="xs:string"/>
+  <xs:element name="photo" type="sourceType"/>
+  <xs:element name="link" type="sourceType" />
+  <xs:element name="title" type="titleStringType" />
+  <xs:attribute name="won" type="boolChessType" />
+  <xs:attribute name="alive" type="boolChessType" />
+</xs:schema>

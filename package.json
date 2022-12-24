@@ -1,0 +1,13 @@
+{
+  "name": "projekt_1",
+  "version": "1.0.0",
+  "description": "projekt na hih i wai",
+  "scripts": {
+    "compile": "tsc --watch"
+  },
+  "author": "Bartek Brzyski",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.8.4"
+  }
+}

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hipertext xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./main.xsd">
+  <author alive="yes">
+    <name>Bartlomiej</name>
+    <surname>Brzyski</surname>
+    <group>6</group>
+    <year>2022</year>
+  </author>
+  <websiteTitle>
+    Moje hobby Szachy
+  </websiteTitle>
+  <chess>
+    <history>
+      <text>
+        W historii szachów przyjmuje się, że powstały w północno-zachodnich
+        Indiach w okresie Imperium Guptów (ok.
+        280-550).
+        Wówczas grano w czaturangę. Od XIII wieku natomiast rozpoczęła się w
+        Europie reforma szachów, najsłabszą jednostkę w czaturandze -
+        hetmana - awansowano na najsilniejszą, wprowadzono prawo promocji pionka po osiągnięciu przez niego
+        ostatniej linii, wreszcie w XVI wieku wprowadzono roszadę, o którą
+        walka toczyła się najdłużej, a w tej formie jaką znamy dzisiaj
+        została zaakceptowana w całej Europie dopiero w XIX stuleciu.
+      </text>
+      <photo source="../img/Krishna-i-Radha-grajacy-w-czaturange.jpg"></photo>
+    </history>
+    <photoGallery>
+      <title>Galeria zdjec szachowych</title>
+      <photos>
+        <photo source="../img/Leonardo-di-Bona-pokonuje-Lopeza-na-dworze-krola-Hiszpanii-Filipa-II.jpg" />
+        <photo source="../img/Partia-szachow-768x1028.jpg" />
+        <photo source="../img/Ulozenie-figur-na-szachownicy-fot.-CC-BY-SA-4.0.png" />
+        <photo source="../img/zdjecie_partia_szachowa.jpg" />
+        <photo source="../img/bobby-fischer-world-championship.jpg" />
+      </photos>
+    </photoGallery>
+    <pieces>
+      <title>Wartosci figur szachowych</title>
+      <piece>
+        <name>Krol</name>
+        <value>Bezccenny</value>
+      </piece>
+      <piece>
+        <name>Hetman</name>
+        <value>9</value>
+      </piece>
+      <piece>
+        <name>Wieza</name>
+        <value>5</value>
+      </piece>
+      <piece>
+        <name>Skoczek</name>
+        <value>3</value>
+      </piece>
+      <piece>
+        <name>Goniec</name>
+        <value>3</value>
+      </piece>
+      <piece>
+        <name>Pionek</name>
+        <value>1</value>
+      </piece>
+    </pieces>
+  </chess>
+  <bestPlayers>
+    <player alive="yes" worldChampion="yes">
+      <name>Maguns</name>
+      <surname>Carlsen</surname>
+      <birth>1990</birth>
+      <photo source="../img/magnus-sleeping.jpg" />
+      <fide>
+        <elo>2859</elo>
+        <link source="https://ratings.fide.com/profile/1503014" />
+      </fide>
+      <about>
+        Magnus Carlsen to norweski
+        arcymistrz szachowy, który jest panującym pięciokrotnym mistrzem
+        świata w szachach. Jest także trzykrotnym mistrzem świata w szachach
+        szybkich i pięciokrotnym mistrzem świata w szachach błyskawicznych.
+        Od 1 lipca 2011 roku zajmuje pozycję nr 1 w światowym rankingu
+        szachowym FIDE. Jego szczytowy ranking 2882 jest najwyższy w
+        historii. Jest także rekordzistą pod względem najdłuższej
+        niepokonanej passy na poziomie elity w szachach klasycznych.
+        Pierwsze szachowe turnieje rozegrał w roku 2001, szybko ściągając na
+        siebie uwagę szachowych ekspertów. Dwa lata później posiadał już
+        tytuł mistrza międzynarodowego, a w roku 2004 otrzymał tytuł
+        arcymistrza, stając się drugim najmłodszym w historii zawodnikiem
+      </about>
+      <bestGames>
+        <game number="1" won="yes" color="white">
+          <opponent>
+            <name>Artemiev</name>
+            <surname>Vladislav</surname>
+            <birth>1998</birth>
+            <fide>
+              <elo>2701</elo>
+              <link source="https://ratings.fide.com/profile/24101605" />
+            </fide>
+          </opponent>
+          <link source="https://chessgames.com/perl/chessgame?gid=2004674" />
+        </game>
+        <game number="2" won="no" color="black">
+          <opponent>
+            <name>Ding</name>
+            <surname>Liren</surname>
+            <birth>1992</birth>
+            <fide>
+              <elo>2811</elo>
+              <link source="https://ratings.fide.com/profile/8603677" />
+            </fide>
+          </opponent>
+          <link source="https://chessgames.com/perl/chessgame?gid=2004674" />
+        </game>
+      </bestGames>
+    </player>
+    <player alive="no" worldChampion="yes">
+      <name>Bobby</name>
+      <surname>Fischer</surname>
+      <birth>1943</birth>
+      <photo source="../img/bobby-fischer.jpg" />
+      <about>
+        Bobby Fischer po raz pierwszy
+        nauczył się gry w szachy w wieku 6 lat i ostatecznie został
+        najmłodszym międzynarodowym arcymistrzem w wieku 15 lat. W 1972 roku
+        został pierwszym urodzonym w Ameryce mistrzem świata w szachach po
+        pokonaniu Borysa Spasskiego. Ekscentryczny geniusz, o którym
+        sądzono, że ma IQ 181, Fischer stał się znany ze swoich
+        kontrowersyjnych publicznych uwag w późniejszych latach. Otrzymał
+        islandzkie obywatelstwo w 2005 roku, po kłopotach prawnych ze
+        Stanami Zjednoczonymi.
+      </about>
+      <bestGames>
+        <game number="1" won="no" color="white">
+          <opponent>
+            <name>Bent</name>
+            <surname>Larsen</surname>
+            <birth>1935</birth>
+          </opponent>
+          <link source="https://www.chessgames.com/perl/chessgame?gid=1044314" />
+        </game>
+        <game number="2" won="yes" color="white">
+          <opponent>
+            <name>Filip</name>
+            <surname>Miroslav</surname>
+            <birth>1928</birth>
+          </opponent>
+          <link source="https://www.chessgames.com/perl/chessgame?gid=1044299" />
+        </game>
+      </bestGames>
+    </player>
+    <player alive="yes" worldChampion="yes">
+      <name>Garry</name>
+      <surname>Kasparov</surname>
+      <birth>1963</birth>
+      <photo source="../img/garry-kasparov.jpg" />
+      <fide>
+        <elo>2812</elo>
+        <link source="https://ratings.fide.com/profile/4100018" />
+      </fide>
+      <about>
+        Garry Kasparov jest rosyjskim
+        arcymistrzem szachowym, byłym mistrzem świata w szachach, pisarzem,
+        działaczem politycznym i komentatorem. Jego szczytowy ranking 2851,
+        osiągnięty w 1999 roku, był najwyższym odnotowanym, dopóki nie
+        został przekroczony przez Magnusa Carlsena
+        w 2013 roku. Od 1984 roku aż do przejścia na emeryturę w 2005 roku
+        Kasparow był numerem 1 na świecie za rekordowe 255 miesięcy w swojej
+        karierze, najwięcej w historii. Kasparow jest również rekordzistą
+        pod względem największej liczby kolejnych zwycięstw w turniejach
+        zawodowych (15) i szachowych Oscarów (11). Kasparow został
+        najmłodszym w historii niekwestionowanym mistrzem świata w szachach
+        w 1985 roku w wieku 22 lat, pokonując ówczesnego mistrza Anatolija
+        Karpowa.
+      </about>
+      <bestGames>
+        <game number="1" won="no" color="black">
+          <opponent>
+            <name>Wesley</name>
+            <surname>So</surname>
+            <birth>1993</birth>
+            <fide>
+              <elo>2760</elo>
+              <link source="https://ratings.fide.com/profile/5202213" />
+            </fide>
+          </opponent>
+          <link source="https://chessgames.com/perl/chessgame?gid=2378164" />
+        </game>
+        <game number="2" won="no" color="white">
+          <opponent>
+            <name>Alireza</name>
+            <surname>Firouzja</surname>
+            <birth>2003</birth>
+            <fide>
+              <elo>2785</elo>
+              <link source="https://ratings.fide.com/profile/12573981" />
+            </fide>
+          </opponent>
+          <link source="https://chessgames.com/perl/chessgame?gid=2378158" />
+        </game>
+      </bestGames>
+    </player>
+  </bestPlayers>
+</hipertext>

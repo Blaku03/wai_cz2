@@ -1,0 +1,50 @@
+@media (max-width: 650px) {
+  html {
+    font-size: 50%;
+  }
+
+  .menu-container {
+    gap: 3em;
+  }
+
+  .menu-text-content {
+    font-size: 0 !important;
+  }
+
+  .menu-svg-icon {
+    display: block;
+  }
+
+  .menu-js-drop {
+    display: none;
+  }
+
+  .main-container {
+    flex-direction: column-reverse;
+    margin: 5em 3em;
+  }
+
+  .a-link-text:link,
+  .a-link-text:visited {
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3.5px;
+  }
+
+  .a-link-text:hover,
+  .a-link-text:active {
+    text-underline-offset: 2px;
+  }
+
+  .image-container {
+    text-align: center;
+  }
+
+  .image-container::after {
+    float: left;
+  }
+
+  #chess-photo-gallery img {
+    max-width: 18vw;
+    max-height: 23vw;
+  }
+}

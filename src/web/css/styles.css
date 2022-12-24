@@ -1,0 +1,332 @@
+:root {
+  --clr-dark: #2e2f2f;
+  --clr-orange: #fb923c;
+  --clr-orange-l: #fff7ed;
+  --clr-grey: #d1d5db;
+  --clr-grey-d: #374151;
+  --max-width: 130em;
+  --clr-blue: #2563eb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Open Sans', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--clr-orange-l);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em 3em;
+  background-color: var(--clr-dark);
+}
+
+.menu-container {
+  list-style: none;
+  display: flex;
+  gap: 0.5vw;
+  position: relative;
+}
+
+.menu-text-content {
+  color: var(--clr-grey);
+  line-height: 1.8;
+  letter-spacing: 0.2px;
+}
+
+.menu-text-content:link,
+.menu-text-content:visited {
+  font-weight: 400;
+  font-size: 1.8em;
+  text-decoration: none;
+  padding: 0.35em 0.5em;
+  transition: all 0.2s linear;
+}
+
+.menu-text-content--current {
+  color: var(--clr-dark);
+  background-color: var(--clr-orange);
+  border-radius: 6px;
+}
+
+.menu-text-content:hover,
+.menu-text-content:active {
+  color: var(--clr-dark);
+  background-color: var(--clr-orange);
+  border-radius: 6px;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--clr-dark);
+}
+
+.menu-svg-icon {
+  display: none;
+  height: 32px;
+  width: 32px;
+}
+
+.drop-link-container {
+  position: absolute;
+  background-color: var(--clr-orange-l);
+  padding: 1em 1.5em;
+  right: 55px;
+  top: 40px;
+  border: 1px solid var(--clr-dark);
+  display: none;
+}
+
+.drop-link-container ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.drop-link-container a {
+  text-decoration: none;
+  font-size: 1.4em;
+  color: var(--clr-dark);
+}
+
+.drop-link-container a:hover {
+  text-decoration: underline;
+  color: var(--clr-orange);
+}
+
+.drop-link-container-active {
+  display: block;
+}
+
+.main-container {
+  max-width: var(--max-width);
+  margin: 5em auto;
+  display: flex;
+  gap: 3em;
+}
+
+.image-container::after {
+  content: 'Gra w czartuge w północno zachodnich indiach';
+  font-size: 1.5em;
+  color: var(--clr-grey-d);
+}
+
+.main-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+  align-items: center;
+}
+
+h1 {
+  font-size: 5em;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1;
+  color: var(--clr-grey-d);
+}
+
+.paragraph-text {
+  font-size: 1.8em;
+  color: var(--clr-grey-d);
+}
+
+.big-first-letter::first-letter {
+  font-weight: 600;
+  font-size: 2em;
+}
+
+.a-link-text:link,
+.a-link-text:visited {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 5px;
+  color: var(--clr-grey-d);
+}
+
+.a-link-text:hover,
+.a-link-text:active {
+  background-color: var(--clr-orange);
+  text-underline-offset: 2px;
+  border-radius: 3px;
+}
+
+#chess-photo-gallery {
+  max-width: var(--max-width);
+  margin: 4em auto;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+#chess-photo-gallery > a {
+  display: block;
+}
+
+#chess-photo-gallery img {
+  max-width: 19vw;
+}
+
+.secondary-title {
+  margin-top: 2em;
+  text-align: center;
+  font-size: 3.8em;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--clr-grey-d);
+}
+
+#table-value-chess-pieces table {
+  font-size: 1.8em;
+  width: 60%;
+}
+
+#table-value-chess-pieces table,
+th,
+td {
+  border: 1px solid;
+  text-align: center;
+}
+
+.chess-table-container {
+  max-width: var(--max-width);
+  margin: 1em auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h3 {
+  margin: 1em 0;
+  font-size: 2.8em;
+  font-weight: 600;
+  color: var(--clr-grey-d);
+}
+
+footer {
+  font-size: 1.6em;
+  text-align: center;
+  background-color: var(--clr-grey);
+  padding: 1em 0;
+  margin-top: 2em;
+  border-top: 2px solid var(--clr-dark);
+  position: relative;
+  display: block;
+}
+
+#scroll-top {
+  position: absolute;
+  display: flex;
+  font-size: 1em;
+  right: 30px;
+  cursor: pointer;
+  animation-duration: 3500ms;
+  animation-iteration-count: infinite;
+  animation-name: topPage;
+}
+
+#scroll-top a:link,
+#scroll-top a:visited {
+  text-decoration: none;
+  color: var(--clr-blue);
+}
+
+@keyframes topPage {
+  0% {
+    top: 10px;
+  }
+
+  50% {
+    top: 15px;
+  }
+
+  100% {
+    top: 10px;
+  }
+}
+
+.best-chess-players {
+  display: flex;
+  flex-direction: column;
+  gap: 5em;
+  max-width: 130em;
+  margin: 3em auto;
+}
+
+.player-container {
+  display: flex;
+  gap: 3em;
+}
+
+.player-photo {
+  max-width: 28vw;
+  max-height: 30vw;
+  display: block;
+}
+
+.player-name {
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.form-container {
+  height: 85vh;
+  display: grid;
+  place-items: center;
+}
+
+form {
+  font-size: 1.7em;
+  background-color: var(--clr-orange);
+  padding: 1em 2em;
+  color: var(--clr-dark);
+}
+
+.form-container form label {
+  display: inline-block;
+  margin-bottom: 0.3em;
+}
+
+.form-container form input,
+.form-container form select {
+  margin-bottom: 1.6em;
+  padding: 0.4em;
+  background-color: var(--clr-orange-l);
+}
+
+.form-container form input:last-child {
+  margin-bottom: 0;
+}
+
+.form-container select {
+  font-size: 1em;
+}
+
+.form-button {
+  background-color: var(--clr-dark) !important;
+  color: var(--clr-grey);
+  margin-top: 1em;
+  margin-right: 1em;
+  font-size: 1em;
+}
+
+#dialog {
+  font-size: 1.8em;
+  display: none;
+}
+
+#ui-id-1 {
+  font-size: 1.6em;
+}
