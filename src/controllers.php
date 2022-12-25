@@ -55,7 +55,7 @@ function register_req()
   if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login']) && isset($_POST['login'])) {
     if (findUser($_POST['login'])) {
       if ($_POST['password'] == $_POST['repeat-password']) {
-        create_user($_POST['login'], $_POST['password']);
+        create_user($_POST['login'], $_POST['password'], $_POST['email']);
         validate_user($_POST['login'], $_POST['password']);
         header("Location: /gallery");
         exit;

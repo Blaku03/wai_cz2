@@ -16,11 +16,11 @@ function get_db()
 
   return $db;
 }
-function create_user($login, $pass)
+function create_user($login, $pass, $email)
 {
   $db = get_db();
   $hash = password_hash($pass, PASSWORD_DEFAULT);
-  return $db->users->insertOne(['login' => $login, 'password' => $hash]);
+  return $db->users->insertOne(['login' => $login, 'password' => $hash, 'email' => $email]);
 }
 function validate_user($login, $pass)
 {
@@ -30,6 +30,7 @@ function validate_user($login, $pass)
     if ($user !== null && password_verify($pass, $user['password'])) {
       session_regenerate_id();
       $_SESSION['user_id'] = $user['_id'];
+      $_SESSION['login'] = $login;
       // $_SESSION['rule'] = $user['rule'];
       return true;
     } else {
