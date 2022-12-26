@@ -23,7 +23,7 @@ $blad = isset($_SESSION['error']) ? $_SESSION['error'] : null;
     </a>
   </div>
 </section>
-<section>
+<section class="section-gallery">
   <h3 style="text-align: center;">Twoje zdjecia</h3>
   <div class="chess-photo-gallery">
     <?php if (count($images_thumbnail)) : ?>
@@ -33,7 +33,22 @@ $blad = isset($_SESSION['error']) ? $_SESSION['error'] : null;
         </a>
       <?php endfor ?>
     <?php else : ?>
-      <p>Brak zdjec</p>
+      <p class="paragraph-text">Brak zdjęć</p>
+    <?php endif ?>
+  </div>
+  <div class="photo-navigation">
+    <?php if ($page > 0) : ?>
+      <a href="/gallery?page=<?= ($page - 1) ?>">Previous</a>
+    <?php endif ?>
+    <?php for ($i = 0; $i <= $num_of_pages; $i++) : ?>
+      <?php if ($i == $page) : ?>
+        <a href="/gallery?page=<?= ($i + 0) ?>" class="button-nav-current"><?= $i ?></a>
+      <?php else : ?>
+        <a href="/gallery?page=<?= ($i + 0) ?>"><?= $i ?></a>
+      <?php endif ?>
+    <?php endfor ?>
+    <?php if ($page < $num_of_pages) : ?>
+      <a href="/gallery?page=<?= ($page + 1) ?>">Next</a>
     <?php endif ?>
   </div>
 </section>

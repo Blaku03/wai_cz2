@@ -78,3 +78,9 @@ function add_watermark($filename, $filetype, $text)
 
   save_image($filetype, $image, $image_dir);
 }
+
+function get_images($pattern, $folder, $start, $images_per_page)
+{
+  $images = glob($folder . $pattern, GLOB_BRACE);
+  return array_slice($images, $start, $images_per_page);
+}

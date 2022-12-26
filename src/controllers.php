@@ -1,7 +1,7 @@
 <?php
 
 require_once 'model.php';
-require_once 'functions.php';
+require_once 'controller_functions.php';
 
 function history()
 {
@@ -20,17 +20,27 @@ function players()
 
 function gallery(&$model)
 {
+  //page photos settings
   $folder = 'static/images/';
+  $page = isset($_GET['page']) ? intval($_GET['page']) : 0;
+  $images_per_page = 5;
+  $start = $page * $images_per_page;
 
-  //for thumbnails
+  //get thumbnails
   $pattern = 'thumbnail_*.{jpg,jpeg,png}';
-  $images_thumbnail = glob($folder . $pattern, GLOB_BRACE);
-  $model['images_thumbnail'] = $images_thumbnail;
+  $page_thumbnails = get_images($pattern, $folder, $start, $images_per_page);
 
-  //for watermarks
+  //get watermarks
   $pattern = 'watermark_*.{jpg,jpeg,png}';
-  $images_watermark = glob($folder . $pattern, GLOB_BRACE);
-  $model['images_watermark'] = $images_watermark;
+  $page_watermarks = get_images($pattern, $folder, $start, $images_per_page);
+
+  $num_of_photos = count(get_images($pattern, $folder, 0, null));
+  $num_of_pages = floor($num_of_photos / $images_per_page);
+
+  $model['images_thumbnail'] = $page_thumbnails;
+  $model['images_watermark'] = $page_watermarks;
+  $model['num_of_pages'] = $num_of_pages;
+  $model['page'] = $page;
 
   return 'gallery_view';
 }
