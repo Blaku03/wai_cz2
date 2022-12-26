@@ -10,6 +10,7 @@ function dispatch($routing, $action_url)
   $view_name = $controller_name($model);
 
   build_response($view_name, $model);
+  $_SESSION['error'] = null;
 }
 
 function build_response($view, $model)

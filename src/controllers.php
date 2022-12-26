@@ -75,11 +75,11 @@ function login_req()
 
 function register_req()
 {
-  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login']) && isset($_POST['login'])) {
+  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login']) && isset($_POST['password'])) {
     if (findUser($_POST['login'])) {
       if ($_POST['password'] == $_POST['repeat-password']) {
-        create_user($_POST['login'], $_POST['password'], $_POST['email']);
-        validate_user($_POST['login'], $_POST['password']);
+        create_user($_POST['login'], $_POST['password'], $_POST['email'], 1);
+        // validate_user($_POST['login'], $_POST['password']);
         header("Location: /gallery");
         exit;
       } else {
@@ -115,6 +115,9 @@ function upload_photo()
 
     //add watermark to photo
     add_watermark($file['name'], $file['type'], $_POST['watermark']);
+
+    //add photo data to database
+
   }
 
   return 'redirect:' . $_SERVER['HTTP_REFERER'];

@@ -28,9 +28,13 @@ $blad = isset($_SESSION['error']) ? $_SESSION['error'] : null;
   <div class="chess-photo-gallery">
     <?php if (count($images_thumbnail)) : ?>
       <?php for ($i = 0; $i < count($images_thumbnail); $i++) : ?>
-        <a href="<?= $images_watermark[$i] ?>">
-          <img src="<?= $images_thumbnail[$i] ?>" />
-        </a>
+        <div class="photo-container">
+          <a href="<?= $images_watermark[$i] ?>">
+            <img src="<?= $images_thumbnail[$i] ?>" />
+          </a>
+          <p>Title : tak</p>
+          <p>Author: ktos</p>
+        </div>
       <?php endfor ?>
     <?php else : ?>
       <p class="paragraph-text">Brak zdjęć</p>
@@ -52,17 +56,27 @@ $blad = isset($_SESSION['error']) ? $_SESSION['error'] : null;
     <?php endif ?>
   </div>
 </section>
-<section>
+<!-- <section>
   <h3 style="text-align: center;">Zdjecia uzytkownikow</h3>
-</section>
+</section> -->
 <div class="form-container">
   <form action="upload/photo" method="post" enctype="multipart/form-data">
     <label for="file">Wskaz zdjecie</label>
     <input type="file" name="file" accept="image/jpeg, image/png" required>
     <br>
+
     <label for="watermark">Znak wodny:</label>
     <input type="text" name="watermark" id="watermark" required>
     <br>
+
+    <label for="author">Autor:</label>
+    <input type="text" name="author" required>
+    <br>
+
+    <label for="photo-title">Tytuł:</label>
+    <input type="text" name="photo-title" required>
+    <br>
+
     <input type="submit" class="form-button" value="Prześlij">
   </form>
   <?= "<p style='color:red; text-align:center' class='paragraph-text'>" . $blad . "</p >" ?>

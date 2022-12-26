@@ -8,7 +8,7 @@ $blad = isset($_SESSION['error']) ? $_SESSION['error'] : null;
   <div class="form-container">
     <form action="register/request" autocomplete="off" method="post">
       <label for="email">E-mail:</label>
-      <input type="email" name="email> id=" email" required>
+      <input type="email" name="email" id="email" required>
       <br>
       <label for="login">Login:</label>
       <input type="text" name="login" id="login" required>

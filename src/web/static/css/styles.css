@@ -171,7 +171,7 @@ h1 {
 	gap: 1em;
 }
 
-.chess-photo-gallery > a {
+.chess-photo-gallery a {
 	display: block;
 }
 
@@ -357,4 +357,8 @@ form {
 .button-nav-current {
 	background-color: var(--clr-dark);
 	color: var(--clr-orange) !important;
+}
+
+.photo-container p {
+	font-size: 1.6em;
 }
