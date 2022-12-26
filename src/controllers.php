@@ -1,7 +1,7 @@
 <?php
 
 require_once 'model.php';
-require_once 'function.php';
+require_once 'functions.php';
 
 function history()
 {
@@ -83,13 +83,13 @@ function upload_photo()
       return 'redirect:' . $_SERVER['HTTP_REFERER'];
     }
 
-    $filename = $file['name'];
-    $uploaddir = $_SERVER['DOCUMENT_ROOT'] . '/static/images/' . $filename;
-
-    if (!move_uploaded_file($file['tmp_name'], $uploaddir)) {
-      $_SESSION['error'] = 'blad podczas przenoszenia pliku na serwer';
+    //move file to server
+    if (!moveFileServer($file['name'], $file['tmp_name'])) {
       return 'redirect:' . $_SERVER['HTTP_REFERER'];
     }
+
+    //make thumbnail of photo
+    makeThumbnail($file['type'], $file['name']);
   }
 
   return 'redirect:' . $_SERVER['HTTP_REFERER'];
