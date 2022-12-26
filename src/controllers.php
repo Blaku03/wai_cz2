@@ -18,8 +18,20 @@ function players()
   return 'players_view';
 }
 
-function gallery()
+function gallery(&$model)
 {
+  $folder = 'static/images/';
+
+  //for thumbnails
+  $pattern = 'thumbnail_*.{jpg,jpeg,png}';
+  $images_thumbnail = glob($folder . $pattern, GLOB_BRACE);
+  $model['images_thumbnail'] = $images_thumbnail;
+
+  //for watermarks
+  $pattern = 'watermark_*.{jpg,jpeg,png}';
+  $images_watermark = glob($folder . $pattern, GLOB_BRACE);
+  $model['images_watermark'] = $images_watermark;
+
   return 'gallery_view';
 }
 

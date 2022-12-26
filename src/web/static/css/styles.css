@@ -163,7 +163,7 @@ h1 {
 	border-radius: 3px;
 }
 
-#chess-photo-gallery {
+.chess-photo-gallery {
 	max-width: var(--max-width);
 	margin: 4em auto;
 	display: flex;
@@ -171,11 +171,11 @@ h1 {
 	gap: 1em;
 }
 
-#chess-photo-gallery > a {
+.chess-photo-gallery > a {
 	display: block;
 }
 
-#chess-photo-gallery img {
+.chess-photo-gallery img {
 	max-width: 19vw;
 }
 

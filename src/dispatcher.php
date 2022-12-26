@@ -10,7 +10,6 @@ function dispatch($routing, $action_url)
   $view_name = $controller_name($model);
 
   build_response($view_name, $model);
-  $_SESSION['error'] = null;
 }
 
 function build_response($view, $model)
@@ -20,13 +19,13 @@ function build_response($view, $model)
     header("Location: " . $url);
     exit;
   } else {
-
-    include 'views/' . $view . '.php';
+    render($view, $model);
   }
-} 
+}
 
-// function render($view_name, $model)
-// {
-//   extract($model);
-//   include 'views/' . $view_name . '.php';
-// }
+function render($view_name, $model)
+{
+  global $routing;
+  extract($model);
+  include 'views/' . $view_name . '.php';
+}

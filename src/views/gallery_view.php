@@ -5,7 +5,7 @@ $blad = isset($_SESSION['error']) ? $_SESSION['error'] : null;
 ?>
 <section>
   <h2 class="secondary-title">Galeria zdjęć szachowych</h2>
-  <div id="chess-photo-gallery">
+  <div class="chess-photo-gallery">
     <a href="static/img/Leonardo-di-Bona-pokonuje-Lopeza-na-dworze-krola-Hiszpanii-Filipa-II.jpg">
       <img src="static/img/Leonardo-di-Bona-pokonuje-Lopeza-na-dworze-krola-Hiszpanii-Filipa-II.jpg" width="200" height="200" alt="leonardoo di bona pokonuje lopeza na dworze krola hiszpanii filipa 2" />
     </a>
@@ -25,6 +25,17 @@ $blad = isset($_SESSION['error']) ? $_SESSION['error'] : null;
 </section>
 <section>
   <h3 style="text-align: center;">Twoje zdjecia</h3>
+  <div class="chess-photo-gallery">
+    <?php if (count($images_thumbnail)) : ?>
+      <?php for ($i = 0; $i < count($images_thumbnail); $i++) : ?>
+        <a href="<?= $images_watermark[$i] ?>">
+          <img src="<?= $images_thumbnail[$i] ?>" />
+        </a>
+      <?php endfor ?>
+    <?php else : ?>
+      <p>Brak zdjec</p>
+    <?php endif ?>
+  </div>
 </section>
 <section>
   <h3 style="text-align: center;">Zdjecia uzytkownikow</h3>
