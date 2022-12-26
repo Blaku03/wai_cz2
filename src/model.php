@@ -31,7 +31,7 @@ function validate_user($login, $pass)
       session_regenerate_id();
       $_SESSION['user_id'] = $user['_id'];
       $_SESSION['login'] = $login;
-      // $_SESSION['rule'] = $user['rule'];
+      $_SESSION['rule'] = $user['rule'];
       return true;
     } else {
       return false;
