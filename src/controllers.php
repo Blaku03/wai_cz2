@@ -1,6 +1,7 @@
 <?php
 
 require_once 'model.php';
+require_once 'function.php';
 
 function history()
 {
@@ -69,5 +70,27 @@ function register_req()
     }
   }
   $_SESSION['error'] = 'problem z rejestracja';
+  return 'redirect:' . $_SERVER['HTTP_REFERER'];
+}
+
+function upload_photo()
+{
+  if (isset($_FILES['file'])) {
+    $file = $_FILES['file'];
+
+    //error handling
+    if (!validImage($file, $file['type'])) {
+      return 'redirect:' . $_SERVER['HTTP_REFERER'];
+    }
+
+    $filename = $file['name'];
+    $uploaddir = $_SERVER['DOCUMENT_ROOT'] . '/static/images/' . $filename;
+
+    if (!move_uploaded_file($file['tmp_name'], $uploaddir)) {
+      $_SESSION['error'] = 'blad podczas przenoszenia pliku na serwer';
+      return 'redirect:' . $_SERVER['HTTP_REFERER'];
+    }
+  }
+
   return 'redirect:' . $_SERVER['HTTP_REFERER'];
 }

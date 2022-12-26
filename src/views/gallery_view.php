@@ -1,6 +1,7 @@
 <?php
 include 'includes/header.php';
 include 'includes/menu.php';
+$blad = isset($_SESSION['error']) ? $_SESSION['error'] : null;
 ?>
 <section>
   <h2 class="secondary-title">Galeria zdjęć szachowych</h2>
@@ -22,6 +23,19 @@ include 'includes/menu.php';
     </a>
   </div>
 </section>
+<div class="form-container">
+  <form action="upload/photo" method="post" enctype="multipart/form-data">
+    <label for="file">Wskaz zdjecie</label>
+    <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
+    <input type="file" name="file" accept="image/jpeg, image/png" required>
+    <br>
+    <!-- <label for="znak-wodny">Znak wodny:</label>
+    <input type="text" name="znak-wodny" required>
+    <br> -->
+    <input type="submit" value="Prześlij">
+  </form>
+  <?= "<p style='color:red; text-align:center' class='paragraph-text'>" . $blad . "</p >" ?>
+</div>
 
 
 

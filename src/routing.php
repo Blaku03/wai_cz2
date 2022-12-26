@@ -10,5 +10,6 @@ $routing = [
   '/players' => 'players',
   '/form' => 'form',
   '/login/request' => 'login_req',
-  '/register/request' => 'register_req'
+  '/register/request' => 'register_req',
+  '/upload/photo' => 'upload_photo'
 ];
