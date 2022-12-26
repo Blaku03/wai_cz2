@@ -78,8 +78,8 @@ function upload_photo()
   if (isset($_FILES['file'])) {
     $file = $_FILES['file'];
 
-    //error handling
-    if (!is_image_valid($file, $file['type'])) {
+    // error handling
+    if (!is_image_valid($file['error'], $file['type'], $file['size'])) {
       return 'redirect:' . $_SERVER['HTTP_REFERER'];
     }
 

@@ -32,7 +32,6 @@ $blad = isset($_SESSION['error']) ? $_SESSION['error'] : null;
 <div class="form-container">
   <form action="upload/photo" method="post" enctype="multipart/form-data">
     <label for="file">Wskaz zdjecie</label>
-    <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
     <input type="file" name="file" accept="image/jpeg, image/png" required>
     <br>
     <label for="watermark">Znak wodny:</label>

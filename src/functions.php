@@ -1,25 +1,47 @@
 <?php
 require_once 'helper_functions.php';
-function is_image_valid($file, $filetype)
+function is_image_valid($fileerror, $filetype, $filesize)
 {
-  if (($file['error'] === UPLOAD_ERR_FORM_SIZE) && !($filetype === 'image/jpeg' || $filetype === 'image/png')) {
-    //almost everything wrong
+  $max_file_size = 1000000;
+  $file_size_bad = ($filesize > $max_file_size);
+  $file_type_bad = !($filetype == 'image/jpeg' || $filetype == 'image/png');
+
+  if ($file_size_bad && $file_type_bad) {
     $_SESSION['error'] = 'przesłany plik jest za duży oraz jest złego formatu';
     return false;
-  } elseif ($file['error'] === UPLOAD_ERR_INI_SIZE || $file['error'] === UPLOAD_ERR_FORM_SIZE) {
-    //file is too big
+  }
+  if ($file_size_bad) {
     $_SESSION['error'] = 'przesłany plik jest za duży';
     return false;
-  } elseif (!($filetype == 'image/jpeg' || $filetype == 'image/png')) {
-    //wrong file type
+  }
+  if ($file_type_bad) {
     $_SESSION['error'] = 'przesłany plik jest złego formatu';
     return false;
-  } elseif ($file['error'] != UPLOAD_ERR_OK) {
+  }
+  if ($fileerror != UPLOAD_ERR_OK) {
     //error with file
     $_SESSION['error'] = 'błąd podczas przesyłania pliku';
     return false;
   }
   return true;
+  // if (($file['error'] === UPLOAD_ERR_FORM_SIZE) && !($filetype == 'image/jpeg' || $filetype == 'image/png')) {
+  //   //almost everything wrong
+  //   $_SESSION['error'] = 'przesłany plik jest za duży oraz jest złego formatu';
+  //   return false;
+  // } elseif ($file['error'] === UPLOAD_ERR_FORM_SIZE) {
+  //   //file is too big
+  //   $_SESSION['error'] = 'przesłany plik jest za duży';
+  //   return false;
+  // } elseif (!($filetype == 'image/jpeg' || $filetype == 'image/png')) {
+  //   //wrong file type
+  //   $_SESSION['error'] = 'przesłany plik jest złego formatu';
+  //   return false;
+  // } elseif ($file['error'] != UPLOAD_ERR_OK) {
+  //   //error with file
+  //   $_SESSION['error'] = 'błąd podczas przesyłania pliku';
+  //   return false;
+  // }
+  // return true;
 }
 
 function move_file_to_server($filename, $tmp_name)
