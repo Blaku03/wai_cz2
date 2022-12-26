@@ -1,7 +1,8 @@
 <?php
-function validImage($file, $filetype)
+require_once 'helper_functions.php';
+function is_image_valid($file, $filetype)
 {
-  if (($file['error'] === UPLOAD_ERR_INI_SIZE || $file['error'] === UPLOAD_ERR_FORM_SIZE) && !($filetype === 'image/jpeg' || $filetype === 'image/png')) {
+  if (($file['error'] === UPLOAD_ERR_FORM_SIZE) && !($filetype === 'image/jpeg' || $filetype === 'image/png')) {
     //almost everything wrong
     $_SESSION['error'] = 'przesłany plik jest za duży oraz jest złego formatu';
     return false;
@@ -21,7 +22,7 @@ function validImage($file, $filetype)
   return true;
 }
 
-function moveFileServer($filename, $tmp_name)
+function move_file_to_server($filename, $tmp_name)
 {
   $uploaddir = $_SERVER['DOCUMENT_ROOT'] . '/static/images/';
   $photodir = $uploaddir . $filename;
@@ -33,19 +34,12 @@ function moveFileServer($filename, $tmp_name)
   return true;
 }
 
-function makeThumbnail($filetype, $filename)
+function make_thumbnail($filetype, $filename)
 {
   $uploaddir = $_SERVER['DOCUMENT_ROOT'] . '/static/images/';
   $photodir = $uploaddir . $filename;
 
-  switch ($filetype) {
-    case 'image/jpeg':
-      $image = imagecreatefromjpeg($photodir);
-      break;
-    case 'image/png':
-      $image = imagecreatefrompng($photodir);
-      break;
-  }
+  $image = create_image($filetype, $photodir);
 
   $thumbnail_width = 200;
   $thumbnail_height = 125;
@@ -54,14 +48,29 @@ function makeThumbnail($filetype, $filename)
   $thumbnail = imagecreatetruecolor($thumbnail_width, $thumbnail_height);
   imagecopyresampled($thumbnail, $image, 0, 0, 0, 0, $thumbnail_width, $thumbnail_height, $orginal_width, $orginal_height);
 
-  $thumbnaildir = $uploaddir . 'thumbnail_' . $filename;
+  $thumbnail_dir = $uploaddir . 'thumbnail_' . $filename;
 
-  switch ($filetype) {
-    case 'image/jpeg':
-      imagejpeg($thumbnail, $thumbnaildir);
-      break;
-    case 'image/png':
-      imagepng($thumbnail, $thumbnaildir);
-      break;
-  }
+  save_image($filetype, $thumbnail, $thumbnail_dir);
+}
+
+function add_watermark($filename, $filetype, $text)
+{
+  $uploaddir = $_SERVER['DOCUMENT_ROOT'] . '/static/images/';
+  $photodir = $uploaddir . $filename;
+
+  //watermark settings
+  $font_size = 20;
+  $font = 'static/font.ttf';
+  $angle = 0;
+  $pos_x = 50;
+  $pos_y = 30;
+  $color = 20;
+
+  $image = create_image($filetype, $photodir);
+
+  imagettftext($image, $font_size, $angle, $pos_x, $pos_y, $color, $font, $text);
+
+  $image_dir = $uploaddir . 'watermark_' . $filename;
+
+  save_image($filetype, $image, $image_dir);
 }

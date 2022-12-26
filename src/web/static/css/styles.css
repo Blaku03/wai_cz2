@@ -282,7 +282,7 @@ footer {
 }
 
 .form-container {
-	height: 85vh;
+	height: 70vh;
 	display: grid;
 	place-items: center;
 }

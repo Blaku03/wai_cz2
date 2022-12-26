@@ -20,7 +20,7 @@ $blad = isset($_SESSION['error']) ? $_SESSION['error'] : null;
       <input type="password" name="repeat-password" id="repeat-password" required>
       <br>
 
-      <input type="submit" value="Zarejestruj sie">
+      <input type="submit" class="form-button" value="Zarejestruj sie">
 
     </form>
     <?= "<p style='color:red; text-align:center' class='paragraph-text'>" . $blad . "</p >" ?>

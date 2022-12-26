@@ -15,7 +15,7 @@ $blad = isset($_SESSION['error']) ? $_SESSION['error'] : null;
       <input type="password" name="password" id="password" required>
 
       <br>
-      <input type="submit" value="Zaloguj sie">
+      <input type="submit" class="form-button" value="Zaloguj sie">
 
     </form>
     <?= "<p style='color:red; text-align:center' class='paragraph-text'>" . $blad . "</p >" ?>

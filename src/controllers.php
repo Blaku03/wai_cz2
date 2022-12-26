@@ -79,17 +79,20 @@ function upload_photo()
     $file = $_FILES['file'];
 
     //error handling
-    if (!validImage($file, $file['type'])) {
+    if (!is_image_valid($file, $file['type'])) {
       return 'redirect:' . $_SERVER['HTTP_REFERER'];
     }
 
     //move file to server
-    if (!moveFileServer($file['name'], $file['tmp_name'])) {
+    if (!move_file_to_server($file['name'], $file['tmp_name'])) {
       return 'redirect:' . $_SERVER['HTTP_REFERER'];
     }
 
     //make thumbnail of photo
-    makeThumbnail($file['type'], $file['name']);
+    make_thumbnail($file['type'], $file['name']);
+
+    //add watermark to photo
+    add_watermark($file['name'], $file['type'], $_POST['watermark']);
   }
 
   return 'redirect:' . $_SERVER['HTTP_REFERER'];
