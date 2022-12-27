@@ -11,5 +11,6 @@ $routing = [
   '/form' => 'form',
   '/login/request' => 'login_req',
   '/register/request' => 'register_req',
-  '/upload/photo' => 'upload_photo'
+  '/upload/photo' => 'upload_photo',
+  '/remember/photos' => 'remember_photos',
 ];

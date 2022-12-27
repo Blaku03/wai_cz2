@@ -362,3 +362,7 @@ footer {
 .photo-container p {
 	font-size: 1.6em;
 }
+
+.user-photos {
+	margin-bottom: 3em;
+}

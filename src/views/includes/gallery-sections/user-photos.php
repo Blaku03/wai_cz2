@@ -1,24 +1,23 @@
 <section class="section-gallery">
   <h3 style="text-align: center;">Twoje zdjecia</h3>
-  <form action="" method="post">
+  <form action="remember/photos" method="post" class="user-photos">
     <div class="chess-photo-gallery">
-      <?php if (count($images_thumbnail)) : ?>
-        <?php for ($i = 0; $i < count($images_thumbnail); $i++) : ?>
+      <?php if (count($images_watermark)) : ?>
+        <?php for ($i = 0; $i < count($images_watermark); $i++) : ?>
           <div class="photo-container">
             <a href="<?= $images_watermark[$i] ?>">
-              <img src="<?= $images_thumbnail[$i] ?>" />
+              <img src="<?= $page_thumbnails[$i] ?>" />
             </a>
-            <p>Autor: ktos</p>
-            <p>Tytuł : tak</p>
+            <p>Autor: xd</p>
+            <p>Tytuł: tak</p>
             <input type="checkbox" name="photoid">
           </div>
         <?php endfor ?>
     </div>
     <input class="form-button" style="font-size:1.6em; padding: 0.4em;" type="submit" value="Zapamiętaj wybrane">
+  <?php else : ?>
+    <p class="paragraph-text" style="display: block;">Brak zdjęć</p>
+  <?php endif ?>
   </form>
-<?php else : ?>
-  <p class=" paragraph-text">Brak zdjęć</p>
-<?php endif ?>
-
-<?php include 'paging.php'; ?>
+  <?php include 'paging.php'; ?>
 </section>

@@ -37,7 +37,7 @@ function gallery(&$model)
   $num_of_photos = count(get_images($pattern, $folder, 0, null));
   $num_of_pages = floor($num_of_photos / $images_per_page);
 
-  $model['images_thumbnail'] = $page_thumbnails;
+  $model['page_thumbnails'] = $page_thumbnails;
   $model['images_watermark'] = $page_watermarks;
   $model['num_of_pages'] = $num_of_pages;
   $model['page'] = $page;
@@ -117,7 +117,10 @@ function upload_photo()
     add_watermark($file['name'], $file['type'], $_POST['watermark']);
 
     //add photo data to database
-
+    if (!add_photo_data($_POST['author'], $_POST['photo-title'], ('thumbnail_' . $file['name']))) {
+      $_SESSION['error'] = 'błąd przy dodawaniu zdjecia do bazy danych';
+      return 'redirect:' . $_SERVER['HTTP_REFERER'];
+    }
   }
 
   return 'redirect:' . $_SERVER['HTTP_REFERER'];

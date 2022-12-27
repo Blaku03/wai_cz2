@@ -47,6 +47,24 @@ function findUser($login)
   return $db->users->findOne(['login' => $login]);
 }
 
-function add_photo_data()
+function add_photo_data($photo_author, $photo_title, $file_name)
 {
+  $db = get_db();
+  return $db->photos->insertOne(['file_name' => $file_name, 'photo_author' => $photo_author, 'photo_title' => $photo_title]);
+}
+
+function get_photos()
+{
+}
+
+function find_photo($file_name)
+{
+  $db = get_db();
+  return $db->photos->findOne(['file_name' => $file_name]);
+}
+
+function delete_photo($file_name)
+{
+  $db = get_db();
+  return $db->photos->deleteOne(['file_name' => $file_name]);
 }
