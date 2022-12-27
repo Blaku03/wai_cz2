@@ -6,10 +6,10 @@
         <?php for ($i = 0; $i < count($images_watermark); $i++) : ?>
           <div class="photo-container">
             <a href="<?= $images_watermark[$i] ?>">
-              <img src="<?= $page_thumbnails[$i] ?>" />
+              <img src="<?= $thumbnails_data[$i]['file_name'] ?>" />
             </a>
-            <p>Autor: xd</p>
-            <p>Tytuł: tak</p>
+            <p>Autor: <?= $thumbnails_data[$i]['photo_author'] ?></p>
+            <p>Tytuł: <?= $thumbnails_data[$i]['photo_title'] ?></p>
             <input type="checkbox" name="photoid">
           </div>
         <?php endfor ?>

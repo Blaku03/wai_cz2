@@ -84,3 +84,12 @@ function get_images($pattern, $folder, $start, $images_per_page)
   $images = glob($folder . $pattern, GLOB_BRACE);
   return array_slice($images, $start, $images_per_page);
 }
+
+function get_thumnail_data(&$thumbnails_data, $page_thumbnails)
+{
+  for ($i = 0; $i < count($page_thumbnails); $i++) {
+    $file_name =  str_replace('static/images/', '', $page_thumbnails[$i]);
+    $thumbnails_data[$i] = find_photo($file_name);
+    $thumbnails_data[$i]['file_name'] = $page_thumbnails[$i];
+  }
+}

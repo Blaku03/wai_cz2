@@ -34,10 +34,15 @@ function gallery(&$model)
   $pattern = 'watermark_*.{jpg,jpeg,png}';
   $page_watermarks = get_images($pattern, $folder, $start, $images_per_page);
 
+  //count pages
   $num_of_photos = count(get_images($pattern, $folder, 0, null));
   $num_of_pages = floor($num_of_photos / $images_per_page);
 
-  $model['page_thumbnails'] = $page_thumbnails;
+  //getting thumbnails data
+  $thumbnails_data = [];
+  get_thumnail_data($thumbnails_data, $page_thumbnails);
+
+  $model['thumbnails_data'] = $thumbnails_data;
   $model['images_watermark'] = $page_watermarks;
   $model['num_of_pages'] = $num_of_pages;
   $model['page'] = $page;
