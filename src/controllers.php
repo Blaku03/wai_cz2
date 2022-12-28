@@ -69,6 +69,11 @@ function checked(&$model)
   return 'checked_view';
 }
 
+function search()
+{
+  return 'search_view';
+}
+
 function login()
 {
   return 'login_view';
@@ -176,5 +181,12 @@ function uncheck_photos()
   }
 
   header("Location: /checked");
+  exit;
+}
+
+function search_title()
+{
+  $results =  search_title_db($_POST['query']);
+  echo json_encode($results);
   exit;
 }

@@ -1,5 +1,5 @@
 		<footer>
-			<p><span class="counter">2022</span>Bartłomiej Brzyski grupa 6</p>
+			<p><span class="counter">2022</span> Bartłomiej Brzyski grupa 6</p>
 			<div id="scroll-top">
 				<p><a href="#top">Początek strony</a></p>
 				<a href="#top">

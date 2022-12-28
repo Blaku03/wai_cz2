@@ -366,3 +366,8 @@ footer {
 .user-photos {
 	margin-bottom: 3em;
 }
+
+#results {
+	font-size: 1.8em;
+	text-align: center;
+}
