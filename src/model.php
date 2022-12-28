@@ -82,7 +82,6 @@ function delete_collection()
 
 function search_title_db($title)
 {
-  //find all photos with title starting with $title
   $db = get_db();
   $results = $db->photos->find(['photo_title' => new MongoDB\BSON\Regex('^' . $title)]);
   return $results->toArray();

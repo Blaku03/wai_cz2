@@ -19,7 +19,6 @@ function is_image_valid($fileerror, $filetype, $filesize)
     return false;
   }
   if ($fileerror != UPLOAD_ERR_OK) {
-    //error with file
     $_SESSION['error'] = 'błąd podczas przesyłania pliku';
     return false;
   }
@@ -62,7 +61,6 @@ function add_watermark($filename, $filetype, $text)
   $uploaddir = $_SERVER['DOCUMENT_ROOT'] . '/static/images/';
   $photodir = $uploaddir . $filename;
 
-  //watermark settings
   $font_size = 20;
   $font = 'static/font.ttf';
   $angle = 0;
