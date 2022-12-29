@@ -93,3 +93,15 @@ function get_thumnail_data(&$thumbnails_data, $page_thumbnails)
     $thumbnails_data[$i]['file_name'] = $page_thumbnails[$i];
   }
 }
+
+function filter_images($images)
+{
+  $filtered = [];
+  foreach ($images as $image) {
+    $data_image = find_photo(str_replace('static/images/', '', $image));
+    if ($data_image['checked']) {
+      array_push($filtered, ('static/images/' . $data_image['file_name']));
+    }
+  }
+  return $filtered;
+}

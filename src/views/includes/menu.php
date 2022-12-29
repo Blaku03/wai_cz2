@@ -21,6 +21,9 @@
           </a>
         </li>
         <li>
+          <a href="checked" class="menu-text-content">Wybrane zdjęcia</a>
+        </li>
+        <li>
           <a class="menu-text-content" href="players">Najlepsi szachiści
           </a>
         </li>

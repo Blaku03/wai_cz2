@@ -50,6 +50,25 @@ function gallery(&$model)
   return 'gallery_view';
 }
 
+function checked(&$model)
+{
+  $folder = 'static/images/';
+
+  //get thumbnails
+  $pattern = 'thumbnail_*.{jpg,jpeg,png}';
+  $page_thumbnails = get_images($pattern, $folder, 0, null);
+
+  $filtered_thumbnails = filter_images($page_thumbnails);
+
+  //getting thumbnails data
+  $thumbnails_data = [];
+  get_thumnail_data($thumbnails_data, $filtered_thumbnails);
+
+  $model['thumbnails_data'] = $thumbnails_data;
+
+  return 'checked_view';
+}
+
 function login()
 {
   return 'login_view';
@@ -142,5 +161,11 @@ function remember_photos()
     }
   }
   header("Location: /gallery");
+  exit;
+}
+
+function uncheck_photos()
+{
+  header("Location: /checked");
   exit;
 }
