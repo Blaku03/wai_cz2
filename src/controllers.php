@@ -166,6 +166,15 @@ function remember_photos()
 
 function uncheck_photos()
 {
+  if (isset($_POST['photoids'])) {
+    foreach ($_POST['photoids'] as $photoid) {
+      if (!update_check_photo($photoid, false)) {
+        $_SESSION['error'] = 'błąd przy zmienianiu wartosci w bazie danych';
+        return 'redirect:' . $_SERVER['HTTP_REFERER'];
+      }
+    }
+  }
+
   header("Location: /checked");
   exit;
 }
