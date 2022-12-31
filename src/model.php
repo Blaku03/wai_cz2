@@ -47,10 +47,10 @@ function findUser($login)
   return $db->users->findOne(['login' => $login]);
 }
 
-function add_photo_data($photo_author, $photo_title, $file_name, $checked)
+function add_photo_data($photo_author, $photo_title, $file_name)
 {
   $db = get_db();
-  return $db->photos->insertOne(['file_name' => $file_name, 'photo_author' => $photo_author, 'photo_title' => $photo_title, 'checked' => $checked]);
+  return $db->photos->insertOne(['file_name' => $file_name, 'photo_author' => $photo_author, 'photo_title' => $photo_title]);
 }
 
 function find_photo($file_name)
@@ -65,14 +65,6 @@ function delete_photo($file_name)
   return $db->photos->deleteOne(['file_name' => $file_name]);
 }
 
-function update_check_photo($id, $check)
-{
-  $db = get_db();
-  $query = ['_id' => new ObjectID($id)];
-  $update = ['$set' => ['checked' => $check]];
-
-  return $db->photos->updateOne($query, $update);
-}
 
 function delete_collection()
 {

@@ -10,7 +10,7 @@
             </a>
             <p>Autor: <?= $thumbnails_data[$i]['photo_author'] ?></p>
             <p>Tytuł: <?= $thumbnails_data[$i]['photo_title'] ?></p>
-            <input type="checkbox" name="photoids[]" value="<?= $thumbnails_data[$i]['_id'] ?>" <?= $thumbnails_data[$i]['checked'] ? 'checked' : '' ?>>
+            <input type="checkbox" name="photoids[]" value="<?= $thumbnails_data[$i]['_id'] ?>" <?= $_SESSION[(string)$thumbnails_data[$i]['_id']]['checked'] ? 'checked' : '' ?>>
           </div>
         <?php endfor ?>
       </div>

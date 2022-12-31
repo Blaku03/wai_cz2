@@ -134,10 +134,14 @@ function upload_photo()
 
     add_watermark($file_name, $file['type'], $_POST['watermark']);
 
-    if (!add_photo_data($_POST['author'], $_POST['photo-title'], ('thumbnail_' . $file_name), false)) {
+    $photo_db_name = 'thumbnail_' . $file_name;
+    if (!add_photo_data($_POST['author'], $_POST['photo-title'], $photo_db_name)) {
       $_SESSION['error'] = 'błąd przy dodawaniu zdjecia do bazy danych';
       return 'redirect:' . $_SERVER['HTTP_REFERER'];
     }
+
+    $photo_data = find_photo($photo_db_name);
+    $_SESSION[(string)$photo_data['_id']]['checked'] = false;
   }
 
   return 'redirect:' . $_SERVER['HTTP_REFERER'];
@@ -148,7 +152,7 @@ function remember_photos()
   if (isset($_POST['photoids'])) {
     foreach ($_POST['photoids'] as $photoid) {
       if (!update_check_photo($photoid, true)) {
-        $_SESSION['error'] = 'błąd przy zmienianiu wartosci w bazie danych';
+        $_SESSION['error'] = 'błąd przy zmienianiu wartosci w sesji';
         return 'redirect:' . $_SERVER['HTTP_REFERER'];
       }
     }
@@ -162,7 +166,7 @@ function uncheck_photos()
   if (isset($_POST['photoids'])) {
     foreach ($_POST['photoids'] as $photoid) {
       if (!update_check_photo($photoid, false)) {
-        $_SESSION['error'] = 'błąd przy zmienianiu wartosci w bazie danych';
+        $_SESSION['error'] = 'błąd przy zmienianiu wartosci w sesji';
         return 'redirect:' . $_SERVER['HTTP_REFERER'];
       }
     }

@@ -97,9 +97,18 @@ function filter_images($images)
   $filtered = [];
   foreach ($images as $image) {
     $data_image = find_photo(str_replace('static/images/', '', $image));
-    if ($data_image['checked']) {
+    if ($_SESSION[(string)$data_image['_id']]['checked']) {
       array_push($filtered, ('static/images/' . $data_image['file_name']));
     }
   }
   return $filtered;
+}
+
+function update_check_photo($id, $check)
+{
+  $_SESSION[(string)$id]['checked'] = $check;
+  if ($_SESSION[(string)$id]['checked'] == $check) {
+    return true;
+  }
+  return false;
 }
